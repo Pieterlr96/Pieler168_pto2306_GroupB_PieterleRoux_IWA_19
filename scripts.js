@@ -81,8 +81,8 @@ const dataListActive = document.querySelector('[data-list-active]')
 const fragmentBooks = document.createDocumentFragment()
 const bookList = books.slice(0, 36)
 bookList.forEach(({ author: authorId, id, image, title }) => {
-    const extractedList = document.createElement("button");
-    extractedList.classList.add("preview");
+    const extractedList = document.createElement("button")
+    extractedList.classList.add("preview")
     extractedList.setAttribute("data-preview", id);
 
     //HTML display info
@@ -101,15 +101,15 @@ dataListItems.appendChild(fragmentBooks);
 function loadPreview(preview) {
     const { author: authorId, id, image, title } = preview;
   
-    const showMore = document.createElement("button");
+    const showMore = document.createElement("button")
     showMore.classList = "preview";
-    showMore.setAttribute("data-preview", id);
+    showMore.setAttribute("data-preview", id)
   
     showMore.innerHTML = /* html */ `
     <img class="preview__image" src="${image}"/>
     <div class="preview__info">
     <h3 class="preview__title">${title}</h3>
-    <div class="preview__author">${authors[authorId]}</div> `;
+    <div class="preview__author">${authors[authorId]}</div> `
     return showMore;
   }
 const dataListButton = document.querySelector("[data-list-button]")
@@ -122,8 +122,8 @@ dataListButton.innerHTML =/*HTML*/`
 `
 dataListButton.addEventListener("click", () => {
     // Define Range
-    const beginning = (page - 1) * BOOKS_PER_PAGE;
-    const end = beginning + BOOKS_PER_PAGE;
+    const beginning = (page - 1) * BOOKS_PER_PAGE
+    const end = beginning + BOOKS_PER_PAGE
     const AddBooks = books.slice(beginning, end)
 
     const addFragment = document.createDocumentFragment()
@@ -133,7 +133,7 @@ dataListButton.addEventListener("click", () => {
     addFragment.appendChild(preview)
     }
 
-    dataListItems.appendChild(addFragment);
+    dataListItems.appendChild(addFragment)
   const otherBooks = books.length - page * BOOKS_PER_PAGE;
   listButton.innerHTML = /* HTML */ `
     <span>Show more</span>
@@ -154,8 +154,8 @@ dataSearchOverlay.showModal()
 dataSearchTitle.focus()
 })
 dataSearchCancel.addEventListener('click', function(){
-    dataSearchOverlay.close();
-    dataSearchForm.reset();
+    dataSearchOverlay.close()
+    dataSearchForm.reset()
 })
 dataSearchForm.addEventListener("submit", (event) => {
     //user selects seach criteria searchbar, click on "search" to retrive data
@@ -168,7 +168,7 @@ dataSearchForm.addEventListener("submit", (event) => {
     const booksSearch = books;
   
     for (let i = 0; i < booksSearch.length; i++) {
-      const book = booksSearch[i];
+      const book = booksSearch[i]
   
       let titleSearch = filters.title.trim() !== "" && book.title.toLowerCase().includes(filters.title.toLowerCase());
       let authorSearch = filters.author !== "any" && book.author.includes(filters.author);
@@ -181,25 +181,25 @@ dataSearchForm.addEventListener("submit", (event) => {
   
     if (result.length > 0) {
       dataListMessage.classList.remove("list__message_show");
-      dataListButton.disabled = true;
-      dataListItems.innerHTML = "";
+      dataListButton.disabled = true
+      dataListItems.innerHTML = ""
   
       const searchFragment = document.createDocumentFragment();
       //returns search results
       for (let i = 0; i < result.length; i++) {
         const book = result[i];
-        const bookPreview = loadPreview(book);
-        searchFragment.appendChild(bookPreview);
+        const bookPreview = loadPreview(book)
+        searchFragment.appendChild(bookPreview)
       }
-      dataListItems.appendChild(searchFragment);
+      dataListItems.appendChild(searchFragment)
     } else {
-      dataListMessage.classList.add("list__message_show"); //if no results, return "your book is in another castle..."
-      listButton.disabled = true;
-      listItems.innerHTML = "";
+      dataListMessage.classList.add("list__message_show") 
+      listButton.disabled = true
+      listItems.innerHTML = ""
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    dataSearchOverlay.close();
-    dataSearchForm.reset();
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    dataSearchOverlay.close()
+    dataSearchForm.reset()
   });
 
 
@@ -210,38 +210,38 @@ genreSelectDefault.value = 'genre'
 
 // Set default display text as 'Genre'
 genreSelectDefault.textContent = 'Genre'
-genresFragment.appendChild(genreSelectDefault);
+genresFragment.appendChild(genreSelectDefault)
 
 // Iterate through the genres and create options for each genre
 Object.entries(genres).forEach(([id, name]) => {
-    const genreSelect = document.createElement('option');
-    genreSelect.value = id;
-    genreSelect.textContent = name;
-    genresFragment.appendChild(genreSelect);
+    const genreSelect = document.createElement('option')
+    genreSelect.value = id
+    genreSelect.textContent = name
+    genresFragment.appendChild(genreSelect)
 });
 
 // Append the genres to the HTML element
-dataSearchGenres.appendChild(genresFragment);
+dataSearchGenres.appendChild(genresFragment)
 
 //Authors 
 const authorsFragment = document.createDocumentFragment()
-const authorSelectDefault = document.createElement('option');
-authorSelectDefault.value = 'author';
+const authorSelectDefault = document.createElement('option')
+authorSelectDefault.value = 'author'
 
 // Set default display text as 'Authors' 
-authorSelectDefault.textContent = 'Authors'; 
-authorsFragment.appendChild(authorSelectDefault);
+authorSelectDefault.textContent = 'Authors' 
+authorsFragment.appendChild(authorSelectDefault)
 
 // Iterate through the authors and create options for each author
 Object.entries(authors).forEach(([id, name]) => {
-    const authorSelect = document.createElement('option');
+    const authorSelect = document.createElement('option')
     authorSelect.value = id;
     authorSelect.textContent = name;
-    authorsFragment.appendChild(authorSelect);
+    authorsFragment.appendChild(authorSelect)
 });
 
 // Append the authors to the HTML element
-dataSearchAuthors.appendChild(authorsFragment);
+dataSearchAuthors.appendChild(authorsFragment)
 
 //summary preview
 const dataListImage = document.querySelector("[data-list-image]")
@@ -252,7 +252,7 @@ const dataListDescription = document.querySelector("[data-list-description]")
 const dataListClose = document.querySelector("[data-list-close]")
 
 dataListItems.addEventListener("click", (event) => {
-  const pathArray = Array.from(event.path || event.composedPath());
+  const pathArray = Array.from(event.path || event.composedPath())
   let active = null;
 
   for (let i = 0; i < pathArray.length; i++) {
