@@ -67,14 +67,9 @@ const modes =  {
     settingsForm.reset();
   });
   
-// Consts For personal ease of use
-//for search
 const dataListItems = document.querySelector('[data-list-items]')
 const dataSearchGenres = document.querySelector('[data-search-genres]')
 const dataSearchAuthors = document.querySelector('[data-search-authors]')
-
-//search control
-
 const dataListActive = document.querySelector('[data-list-active]')
 
 //creates book display range
