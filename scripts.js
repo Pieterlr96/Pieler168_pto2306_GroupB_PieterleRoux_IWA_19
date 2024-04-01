@@ -91,7 +91,7 @@ bookList.forEach(({ author: authorId, id, image, title }) => {
     fragmentBooks.appendChild(extractedList);
 });
 dataListItems.appendChild(fragmentBooks);
-// ShowMore button
+
 //preview function
 function loadPreview(preview) {
     const { author: authorId, id, image, title } = preview;
@@ -107,6 +107,7 @@ function loadPreview(preview) {
     <div class="preview__author">${authors[authorId]}</div> `
     return showMore;
   }
+// ShowMore button
 const dataListButton = document.querySelector("[data-list-button]")
 dataListButton.innerHTML =/*HTML*/`
 <span>Load More</span>
